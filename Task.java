@@ -18,6 +18,7 @@ public class Task {
       pw.flush();
       pw.close();
     }
+    // input.close();
   }
 
   static void people_read(String text, ArrayList<Person> people) throws Exception {
@@ -27,7 +28,6 @@ public class Task {
     if (a == 0) {
       FileReader pr = new FileReader(text);
       Scanner scan = new Scanner(pr);
-      // ArrayList<Person> people = new ArrayList<>();
       while (scan.hasNextLine()) {
         String[] fullName = scan.nextLine().split(" ");
         int id = Integer.parseInt(fullName[0]);
@@ -36,8 +36,9 @@ public class Task {
         int year_of_birth = Integer.parseInt(fullName[3]);
         people.add(new Person(id, first_Name, Last_Name, year_of_birth));
       }
+      scan.close();
       pr.close();
-    }
+    } // input.close();
   }
 
   static String[] input_fullName() {
@@ -63,7 +64,7 @@ public class Task {
       for (Person human : people) {
         System.out.println(human);
       }
-    }
+    } // input.close();
   }
 
   public static void main(String[] args) throws Exception {
@@ -73,14 +74,14 @@ public class Task {
     Scanner input = new Scanner(System.in);
     System.out.printf("Введите количество дополнительныйх записей (можно 0):");
     int amount = input.nextInt();
-
+    // input.close();
     for (int i = 0; i < amount; i++) {
       String[] fullName = input_fullName();
       String first_Name = fullName[0];
       String Last_Name = fullName[1];
       int year_of_birth = Integer.parseInt(fullName[2]);
       people.add(new Person(i, first_Name, Last_Name, year_of_birth));
-    }   
+    }
 
     print_people(people);
 
@@ -128,7 +129,7 @@ public class Task {
     }
 
     // new Research(gt).view_tree();
-    
+
   }
 }
 
@@ -210,10 +211,10 @@ class Research {
     tree = geoTree.getTree();
   }
 
-  public void view_tree() {    
-    for (Node t : tree) {      
-        System.out.println((t.toString()));      
-    }    
+  public void view_tree() {
+    for (Node t : tree) {
+      System.out.println((t.toString()));
+    }
   }
 
   public int search(Person p) {
