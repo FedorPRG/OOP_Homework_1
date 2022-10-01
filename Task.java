@@ -71,7 +71,7 @@ public class Task {
     people_read("people.txt", people);
 
     Scanner input = new Scanner(System.in);
-    System.out.printf("Введите количество записей:");
+    System.out.printf("Введите количество дополнительныйх записей (можно 0):");
     int amount = input.nextInt();
 
     for (int i = 0; i < amount; i++) {
